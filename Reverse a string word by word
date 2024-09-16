@@ -1,0 +1,40 @@
+#include <iostream>
+#include <sstream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+string reverseWords(string s) {
+    istringstream iss(s);
+    vector<string> words;
+    string word;
+
+    // Extract words from the string
+    while (iss >> word) {
+        words.push_back(word);
+    }
+
+    // Reverse the order of words
+    reverse(words.begin(), words.end());
+
+    // Join the words back into a single string
+    string result;
+    for (size_t i = 0; i < words.size(); ++i) {
+        result += words[i];
+        if (i != words.size() - 1) {
+            result += " ";
+        }
+    }
+
+    return result;
+}
+
+int main() {
+    string s;
+    cout << "Enter a string: ";
+    getline(cin, s);
+
+    string reversed = reverseWords(s);
+    cout << "Reversed string: " << reversed << endl;
+
+    return 0;
+}
